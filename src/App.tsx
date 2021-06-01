@@ -4,13 +4,11 @@ import { Formik, Form, Field } from "formik";
 import { TextFormField } from "./FormFields/TextFormField";
 import { SliderFormField } from "./FormFields/SliderFormField";
 import { SelectFormField } from "./FormFields/SelectFormField";
+import { CheckBoxFormField } from "./FormFields/CheckBoxFormField";
 
 const schema = yup.object({
-  username: yup
-    .string()
-    .required()
-    .min(3),
-  email: yup.string().email()
+  username: yup.string().required().min(3),
+  email: yup.string().email(),
 });
 
 const App: React.FC = () => {
@@ -41,11 +39,22 @@ const App: React.FC = () => {
                 <Field
                   options={[
                     { label: "Dog", value: "dog" },
-                    { label: "Cat", value: "cat" }
+                    { label: "Cat", value: "cat" },
                   ]}
                   label="Pet"
                   name="pet"
                   component={SelectFormField}
+                />
+              </div>
+              <div>
+                <Field
+                  options={[
+                    { label: "Toyota", value: "T" },
+                    { label: "BMW", value: "B" },
+                  ]}
+                  label="Car"
+                  name="car"
+                  component={CheckBoxFormField}
                 />
               </div>
             </Form>
